@@ -1,0 +1,90 @@
+﻿<Window x:Class="SnowTrial1.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SnowTrial1"
+        xmlns:controls="clr-namespace:BlurryControls.Controls;assembly=BlurryControls"
+        mc:Ignorable="d"
+        Title="Settings" Height="250" Width="350" Background="FloralWhite" WindowStartupLocation="CenterScreen" PreviewKeyDown="Window_PreviewKeyDown">
+    
+    <Grid Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  >
+           <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            </Style>
+            <Style TargetType="Slider">
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            </Style>
+        </Grid.Resources>
+        
+        <TextBlock  Grid.Row="0" Grid.Column="0">Number of Rows :</TextBlock>
+        <Slider x:Name="RowsSlider"  Grid.Row="0" Grid.Column="1"
+                            Value="{Binding NumberOfRows, Mode=TwoWay}"
+                            Minimum="2"
+                            Maximum="20"  />
+        <TextBlock Grid.Column="2" Grid.Row="0" Text="{Binding ElementName=RowsSlider, Path=Value}"/>
+
+        <TextBlock  Grid.Row="1" Grid.Column="0">Number of Columns :</TextBlock>
+        <Slider x:Name="ColumnsSlider"  Grid.Row="1" Grid.Column="1"
+                            Value="{Binding NumberOfColumns, Mode=TwoWay}"
+                            Minimum="2"
+                            Maximum="20"  />
+        <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding ElementName=ColumnsSlider, Path=Value}"/>
+
+
+        <TextBlock Grid.Row="2" Grid.Column="0">Opacity Value:</TextBlock>
+        <Slider  x:Name="OpacitySlider" Grid.Row="2" Grid.Column="1"
+                            Value="{Binding OpacityValue, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="1" />
+        <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding ElementName=OpacitySlider, Path=Value}"/>
+       
+        <TextBlock Grid.Row="3" Grid.Column="0">Magnification :</TextBlock>
+        <Slider x:Name="MaginificationSlider"  Grid.Row="3" Grid.Column="1"
+                            Value="{Binding MagnificationValue, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="2" />
+        <TextBlock Grid.Column="2" Grid.Row="3" Text="{Binding ElementName=MaginificationSlider, Path=Value}"/>
+     
+        <TextBlock Grid.Row="4" Grid.Column="0">Blur Radius :</TextBlock>
+        <Slider x:Name="BlurRadiusSlider"  Grid.Row="4" Grid.Column="1"
+                            Value="{Binding BlurRadiusValue, Mode=TwoWay}"
+                            TickFrequency="5"
+                            TickPlacement="Both"
+                            IsSnapToTickEnabled="True"
+                            Minimum="0"
+                            Maximum="50" />
+        <TextBlock Grid.Column="3" Grid.Row="4" Text="{Binding ElementName=BlurRadiusSlider, Path=Value}"/>
+
+        <Button VerticalAlignment="Center" Margin="0 5 5 5" Grid.Row="5"  Grid.Column="0" Foreground="White" MinHeight="30" MinWidth="100" Background="Black" Content="Reset" x:Name="ResetButton" Click="ResetButton_Click"/>
+        <Button VerticalAlignment="Center" Margin="0 5 5 5" Grid.Row="5" Grid.Column="1" Foreground="White" MinHeight="30" MinWidth="100" Background="Black" Content="Update" x:Name="UpdateButton" Click="UpdateButton_Click"/>
+        <Label Foreground="Black" Background="Black" Content="Use Escape key to close the window." Grid.Row="6" Grid.Column="0" Margin="5 0 0 0" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
